@@ -1,0 +1,118 @@
+<% layout("/layouts/boilerplate") -%>
+
+<style>
+	.privacy-hero {
+		background: linear-gradient(135deg, #fe424d 0%, #ff6b6b 100%);
+		color: #ffffff;
+		border-radius: 16px;
+		padding: 2rem 1.5rem;
+		box-shadow: 0 12px 30px rgba(254, 66, 77, 0.25);
+	}
+
+	.section-card {
+		background: #ffffff;
+		border-radius: 12px;
+		border: 1px solid #e9ecef;
+		box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+		padding: 1.25rem 1.25rem;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.section-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+	}
+
+	.section-card h5 {
+		font-weight: 700;
+		margin-bottom: 0.75rem;
+	}
+
+	.brand-chip {
+		display: inline-block;
+		background-color: #fe424d;
+		color: #fff;
+		border-radius: 999px;
+		padding: 0.25rem 0.75rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+
+	.privacy-list li + li { margin-top: 0.5rem; }
+
+	@media (max-width: 768px) {
+		.privacy-hero { padding: 1.5rem 1rem; }
+		.section-card { padding: 1rem 1rem; }
+	}
+</style>
+
+<div class="container mt-4 mb-5">
+	<div class="privacy-hero mb-4">
+		<h2 class="mb-2 d-flex align-items-center">
+			<i class="fas fa-shield-alt me-2"></i>
+			Privacy Policy
+		</h2>
+		<p class="mb-0">We respect your privacy. This page explains what data we collect, how we use it, and the choices you have.</p>
+		<div class="mt-3"><span class="brand-chip">Last updated: <%= new Date().toLocaleDateString() %></span></div>
+	</div>
+
+	<div class="row g-3">
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-database me-2" style="color:#fe424d;"></i>Information we collect</h5>
+				<ul class="privacy-list mb-0">
+					<li>Account details such as name, email, and contact number.</li>
+					<li>Booking information and communication with hosts/guests.</li>
+					<li>Usage data like device, browser, and interactions with features.</li>
+					<li>Location data if you allow location-based features (e.g., maps).</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-people-arrows me-2" style="color:#fe424d;"></i>How we use your data</h5>
+				<ul class="privacy-list mb-0">
+					<li>Provide, maintain, and improve the CarCruise platform.</li>
+					<li>Process bookings, payments, and customer support requests.</li>
+					<li>Prevent fraud, enforce policies, and ensure platform safety.</li>
+					<li>Send service-related updates. Marketing emails are opt-in and can be unsubscribed anytime.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-cookie-bite me-2" style="color:#fe424d;"></i>Cookies and tracking</h5>
+				<p class="mb-0">We use cookies and similar technologies to keep you signed in, remember preferences, understand usage, and personalize content. You can control cookies via your browser settings; some features may not function without them.</p>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-lock me-2" style="color:#fe424d;"></i>Data retention and security</h5>
+				<p class="mb-0">We retain data only as long as necessary for the purposes described. We employ administrative, technical, and physical safeguards to protect your information.</p>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-user-shield me-2" style="color:#fe424d;"></i>Your rights</h5>
+				<ul class="privacy-list mb-0">
+					<li>Access, update, or delete your account information.</li>
+					<li>Opt out of marketing communications.</li>
+					<li>Request a copy of your data or object to certain processing, where applicable.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-envelope-open-text me-2" style="color:#fe424d;"></i>Contact us</h5>
+				<p class="mb-2">Questions or requests about this policy?</p>
+				<a href="mailto:support@carcruise.com" class="btn btn-cc"><i class="fas fa-paper-plane me-2"></i>Email Support</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="text-muted mt-4" style="font-size:0.95rem;">
+		By using CarCruise, you agree to this Privacy Policy and our Terms. This page may be updated periodically to reflect changes in our practices.
+	</div>
+</div>
+
+

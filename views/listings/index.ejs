@@ -1,0 +1,495 @@
+
+<% layout("/layouts/boilerplate") -%>
+
+<style>
+    #filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .filter {
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.7;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .filter p {
+        font-size: 0.8rem;
+    }
+
+    .tax-info {
+        display:none;
+    }
+
+    .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 3rem;
+        display: flex;
+        align-items: center;
+    }
+    .form-check-label {
+        font-weight: 500;
+    }
+    
+    div i {
+        font-weight: 500;
+    }
+
+    @media (min-width: 320px) and (max-width: 1200px) {
+    .filters-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    #filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+    }
+    #filters::-webkit-scrollbar { display: none; }
+
+    .filter {
+        flex: 0 0 auto;
+        margin-right: 1rem;
+    }
+
+    .form-check-label {
+        font-size: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+
+    .tax-toggle {
+        flex: 1 1 100%;   /* take full width in flexbox */
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tax-toggle {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-check-input {
+        margin-top: 1.1rem;
+    }
+}
+
+    @media(min-width:992px) {
+        
+    .form-check-label {
+        font-size: 1rem;
+        align-items: center;
+        font-weight: 600;
+        justify-content: center;
+    }
+
+    .form-check-input {
+        margin-top: 0.4rem;
+    }
+    
+    @media (min-width: 769px) and (max-width: 1200px) {
+            
+    .form-check-label {
+        font-size: 0.7rem;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+
+    .form-check-input {
+        margin-top: 1rem;
+        }
+    }
+    @media (min-width: 1201px) and (max-width: 1290px) {
+        .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 70rem;
+        margin-bottom: 1rem;
+        display: flex;
+        position: fixed;
+        top: 105px; /* Distance from top */
+        left: -80px; /* Distance from left */
+        z-index: 1000;
+        background-color: white;
+        color: #000;        
+        align-items: center;
+    }
+    .form-check-label {
+        font-size: 0.9rem;
+        align-items: center;
+        font-weight: 600;
+        justify-content: center;
+    }
+}
+    @media (min-width: 1289px) and (max-width: 1400px) {
+            
+    .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 70rem;
+        margin-bottom: 1rem;
+        display: flex;
+        position: fixed;
+        top: 105px; /* Distance from top */
+        left: -30px; /* Distance from left */
+        z-index: 1000;
+        background-color: white;
+        color: #000;        
+        align-items: center;
+    }
+    
+    .form-check-label {
+        font-size: 1rem;
+        align-items: center;
+        font-weight: 600;
+        justify-content: center;
+    }
+
+    .form-check-input {
+        margin-top: 0.4rem;
+        }
+    }
+}
+
+/* this is old */
+    #filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .filter {
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.7;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .filter p {
+        font-size: 0.8rem;
+    }
+
+    .tax-info {
+        display:none;
+    }
+
+    .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 3rem;
+        display: flex;
+        align-items: center;
+    }
+    .form-check-label {
+        font-weight: 500;
+    }
+    
+    div i {
+        font-weight: 500;
+    }
+
+    @media (min-width: 320px) and (max-width: 1200px) {
+    .filters-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    #filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+    }
+    #filters::-webkit-scrollbar { display: none; }
+
+    .filter {
+        flex: 0 0 auto;
+        margin-right: 1rem;
+    }
+
+    .form-check-label {
+        font-size: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+
+    .tax-toggle {
+        flex: 1 1 100%;   
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tax-toggle {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-check-input {
+        margin-top: 1.1rem;
+    }
+}
+
+    @media(min-width:992px) {
+        
+    .form-check-label {
+        font-size: 1rem;
+        align-items: center;
+        font-weight: 600;
+        justify-content: center;
+    }
+
+    .form-check-input {
+        margin-top: 0.4rem;
+    }
+    
+    @media (min-width: 769px) and (max-width: 1200px) {
+            
+    .form-check-label {
+        font-size: 0.7rem;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+
+    .form-check-input {
+        margin-top: 1rem;
+        }
+    }
+    @media (min-width: 1201px) and (max-width: 1290px) {
+        .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 70rem;
+        margin-bottom: 1rem;
+        display: flex;
+        position: fixed;
+        top: 105px; 
+        left: -80px;
+        z-index: 1000;
+        background-color: white;
+        color: #000;        
+        align-items: center;
+    }
+    .form-check-label {
+        font-size: 0.9rem;
+        align-items: center;
+        font-weight: 600;
+        justify-content: center;
+    }
+}
+    @media (min-width: 1289px) and (max-width: 1400px) {
+            
+    .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 70rem;
+        margin-bottom: 1rem;
+        display: flex;
+        position: fixed;
+        top: 105px; 
+        left: -30px;
+        z-index: 1000;
+        background-color: white;
+        color: #000;        
+        align-items: center;
+    }
+    
+    .form-check-label {
+        font-size: 1rem;
+        align-items: center;
+        font-weight: 600;
+        justify-content: center;
+    }
+
+    .form-check-input {
+        margin-top: 0.4rem;
+        }
+    }
+}
+</style>
+
+<div id="filters">
+
+    <div class="filter">
+        <div data-tag="Premium"
+            title="Filter by Premium"><i
+                class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Premium"
+            title="Filter by Premium"><i
+                class="fa-brands fa-web-awesome"></i></div>
+        <p>Premium</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Sedan"
+            title="Filter by Sedan"><i class="fa-solid fa-car-side"></i></div>
+        <p>Sedan</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="SUV"
+            title="Filter by SUV"><i
+                class="fa-solid fa-truck-monster"></i></div>
+        <p>SUV</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Family"
+            title="Filter by Family"><i
+                class="fa-solid fa-van-shuttle"></i></div>
+        <p>Family Car</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Luxurious"
+            title="Filter by Luxurious"><i class="fa-solid fa-gem"></i></div>
+        <p>Luxurious</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Budget"
+            title="Filter by Budget"> <i class="fa-solid fa-coins"></i></div>
+        <p>Budget</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Hatchback"
+            title="Filter by Hatchback"><i class="fa-solid fa-car"></i></div>
+        <p>Hatchback</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Electric"
+            title="Filter by Electric"><i class="fa-solid fa-bolt"></i></div>
+        <p>Electric Car</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Manual"
+            title="Filter by Manual"><i class="fa-solid fa-gear"></i></div>
+        <p>Manual Car</p>
+    </div>
+
+    <div class="filter">
+        <div data-tag="Automatic"
+            title="Filter by Automatic"><i class="fa-solid fa-robot"></i></div>
+        <p>Automatic Car</p>
+    </div>
+
+    <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch"
+                id="switchCheckDefault">
+            <label class="form-check-label" for="switchCheckDefault">
+                Display total after taxes</label>
+        </div>
+    </div>
+    <script>
+    (function(){
+    const params = new URLSearchParams(window.location.search);
+    const activeTags = params.getAll('tags');
+
+    document.querySelectorAll('#filters .filter').forEach(el => {
+        const tag = el.querySelector('[data-tag]')?.getAttribute('data-tag');
+        if (!tag) return;
+
+        if (activeTags.includes(tag)) {
+            el.style.opacity = '1';
+            el.style.transform = 'scale(1.02)';
+        }
+
+        el.addEventListener('click', () => {
+            const url = new URL(window.location.href);
+            const isActive = activeTags.includes(tag);
+            url.searchParams.delete('tags');
+            if (!isActive) {
+                url.searchParams.append('tags', tag);
+            }
+            window.location.href = url.toString();
+        });
+    });
+})();
+    </script>
+</div>
+
+<div class="row row-cols-lg-3 row-cols-mg-2 row-cols-sm-1">
+    <% for (let listing of allListings) { %>
+    <div class="listing-wrapper" style="position:relative;">
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card">
+                <img src="<%= listing.image.url %>" class="card-img-top"
+                    alt="listing image" style="height: 20rem;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= listing.title %></b> <br>
+                        &#8377; <%= listing.price.toLocaleString("en-IN") %>
+                        /
+                        day
+                        <i class="tax-info">&nbsp; &nbsp;+18% GST</i>
+                    </p>
+                </div>
+            </div>
+        </a>
+        <!-- Booking button removed as per user request -->
+    </div>
+    <% } %>
+</div>
+
+<script>
+    let taxSwitch = document.getElementById("switchCheckDefault");
+    taxSwitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("tax-info");
+        for(info of taxInfo) {
+            if(info.style.display != "inline") {
+                info.style.display = "inline";
+            }else {
+                info.style.display = "none";
+            } 
+        }
+    });
+</script>

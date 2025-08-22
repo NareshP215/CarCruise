@@ -1,0 +1,73 @@
+/* Map-specific styles */
+#map {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.map-container {
+    position: relative;
+}
+
+.map-instructions {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.geocode-form {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.geocode-form .form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+.btn-geocode {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.btn-geocode:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.leaflet-popup-content strong {
+    color: #007bff;
+}
+
+/* Responsive map */
+@media (max-width: 768px) {
+    #map {
+        height: 300px !important;
+    }
+    
+    .geocode-form .row > div {
+        margin-bottom: 10px;
+    }
+    
+    .btn-geocode {
+        width: 100%;
+        margin-top: 10px;
+    }
+} 

@@ -1,0 +1,891 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Navbar */
+
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links, .f-info-socials, .f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* Cards */
+
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400 !important;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+/* Mobile-optimized image sizing */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 280px !important;
+        border-radius: 0.75rem !important;
+    }
+
+    .listing-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-img-top {
+        height: 320px !important;
+        border-radius: 0.5rem !important;
+    }
+
+    .listing-card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-img-top {
+        height: 350px !important;
+    }
+
+    /* Enhanced mobile card styling */
+    .listing-card {
+        border-radius: 12px !important;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .card-body {
+        padding: 1rem !important;
+    }
+
+    .card-text {
+        font-size: 1.1rem !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Additional mobile optimizations for dashboard and booking images */
+    .listing-thumbnail {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .listing-image {
+        height: 250px !important;
+    }
+}
+
+/* Card Effect */
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* New Page */
+
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* Nav pills brand color */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background-color: #fe424d !important;
+    color: #fff !important;
+    border-color: #fe424d !important;
+}
+
+
+/* Show Page */
+
+.show-img {
+    height: 30vh;
+    border-radius: 1rem !important;
+    transition: transform 0.3s ease;
+}
+
+.show-img:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile-optimized show page image */
+@media (max-width: 768px) {
+    .show-img {
+        height: 40vh !important;
+        border-radius: 0.75rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .show-img {
+        height: 45vh !important;
+        border-radius: 0.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .show-img {
+        height: 50vh !important;
+    }
+}
+
+.btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Mobile responsive improvements for buttons */
+@media (max-width: 768px) {
+    .btns {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .edit-btn, .delete-btn, .btn-cc, .btn-cc-outline {
+        width: 100% !important;
+        max-width: 200px !important;
+        padding: 1rem 2rem !important;
+        font-size: 1.1rem !important;
+        border-radius: 12px !important;
+        position: relative !important;
+    }
+
+    .edit-btn:active, .delete-btn:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* Review delete button tablet optimization */
+    .btn-sm.delete-btn {
+        min-width: 110px !important;
+        padding: 0.45rem 0.9rem !important;
+        font-size: 0.88rem !important;
+        white-space: nowrap !important;
+    }
+
+    /* Make Edit and Delete buttons same size on tablet */
+    .edit-btn, .delete-btn, .btn-cc, .btn-cc-outline {
+        min-width: 110px !important;
+        max-width: 110px !important;
+        width: 110px !important;
+        padding: 0.45rem 0.9rem !important;
+        font-size: 0.88rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .btns {
+        padding: 0 0.5rem;
+    }
+
+    .edit-btn, .delete-btn, .btn-cc, .btn-cc-outline {
+        max-width: 180px !important;
+        padding: 0.875rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Edit Page */
+
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(254, 66, 77, 0.3) !important;
+    min-width: 100px !important;
+    text-align: center !important;
+    color: white !important;
+}
+
+.edit-btn:hover {
+    background-color: #fe424d !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(254, 66, 77, 0.4) !important;
+    color: white !important;
+}
+
+/* Brand button styles (shared across dashboard and bookings) */
+.btn-cc {
+    background-color: #fe424d !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(254, 66, 77, 0.3) !important;
+    min-width: 100px !important;
+    text-align: center !important;
+    color: white !important;
+}
+
+.btn-cc:hover {
+    background-color: #fe424d !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(254, 66, 77, 0.4) !important;
+    color: white !important;
+}
+
+.btn-cc-outline {
+    background-color: transparent !important;
+    color: #fe424d !important;
+    border: 2px solid #fe424d !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    min-width: 100px !important;
+    text-align: center !important;
+}
+
+.btn-cc-outline:hover {
+    background-color: #fe424d !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(254, 66, 77, 0.3) !important;
+}
+
+.delete-btn {
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3) !important;
+    min-width: 100px !important;
+    text-align: center !important;
+}
+
+.delete-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4) !important;
+    opacity: 0.8;
+}
+
+/* Review Delete Button Styling */
+.btn-sm.delete-btn {
+    color: white !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3) !important;
+    min-width: 120px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    font-size: 0.9rem !important;
+}
+
+.btn-sm.delete-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 3px 6px rgba(220, 53, 69, 0.4) !important;
+    color: white !important;
+}
+
+/* Star Rating Mobile Optimization */
+@media (max-width: 768px) {
+    .starability-result {
+        font-size: 0.8rem !important;
+        line-height: 1 !important;
+    }
+
+    .starability-result::before {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .starability-result {
+        font-size: 0.75rem !important;
+    }
+
+    .starability-result::before {
+        font-size: 0.75rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .starability-result {
+        font-size: 0.7rem !important;
+    }
+
+    .starability-result::before {
+        font-size: 0.7rem !important;
+    }
+}
+
+
+
+@media (max-width: 576px) {
+
+    /* Make Edit and Delete buttons same size on small mobile */
+    .edit-btn, .delete-btn, .btn-cc, .btn-cc-outline {
+        min-width: 105px !important;
+        max-width: 105px !important;
+        width: 105px !important;
+        padding: 0.42rem 0.85rem !important;
+        font-size: 0.87rem !important;
+    }
+
+    /* Review delete button small mobile optimization */
+    .btn-sm.delete-btn {
+        min-width: 105px !important;
+        padding: 0.42rem 0.85rem !important;
+        font-size: 0.87rem !important;
+        white-space: nowrap !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .btns {
+        padding: 0 0.5rem;
+    }
+
+    /* Make Edit and Delete buttons same size on very small mobile */
+    .edit-btn, .delete-btn, .btn-cc, .btn-cc-outline {
+        min-width: 100px !important;
+        max-width: 100px !important;
+        width: 100px !important;
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Review delete button mobile optimization */
+    .btn-sm.delete-btn {
+        min-width: 100px !important;
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.85rem !important;
+        white-space: nowrap !important;
+    }
+
+    /* Additional mobile optimizations for dashboard and booking images */
+    .listing-thumbnail {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .listing-image {
+        height: 250px !important;
+    }
+}
+
+#map {
+    height: 400px;
+    width: 80vh;
+}
+
+/* Booking Modal Styles */
+#bookingModal {
+    backdrop-filter: blur(5px);
+}
+
+#bookingModal .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: none !important;
+}
+
+#bookingModal .modal-header {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 15px 15px 0 0;
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+#bookingModal .modal-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+#bookingModal .btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+#bookingModal .btn-close:hover {
+    opacity: 1;
+}
+
+#bookingModal .modal-body {
+    padding: 2rem;
+}
+
+#bookingModal .form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+#bookingModal .form-control {
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    padding: 0.875rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+#bookingModal .form-control:focus {
+    border-color: #fe424d;
+    box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.15);
+    outline: none;
+}
+
+#bookingModal .alert-info {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    color: #495057;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+#bookingModal .btn-primary {
+    background-color: #fe424d;
+    border-color: #fe424d;
+    border-radius: 8px;
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+#bookingModal .btn-primary:hover:not(:disabled) {
+    background-color: #e63946;
+    border-color: #e63946;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+}
+
+#bookingModal .btn-primary:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#bookingModal .btn-secondary {
+    border-radius: 8px;
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#bookingModal .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Alert styles for booking modal */
+#bookingModal .alert {
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+#bookingModal .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+#bookingModal .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+/* Mobile responsive booking modal */
+@media (max-width: 768px) {
+    #bookingModal .modal-dialog {
+        margin: 0 !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+    }
+    
+    #bookingModal .modal-content {
+        margin: 0 !important;
+        border-radius: 0 !important;
+        height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #bookingModal .modal-header {
+        padding: 1.5rem 1rem 1rem 1rem !important;
+        border-radius: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    #bookingModal .modal-body {
+        padding: 1.5rem 1rem !important;
+        flex: 1 !important;
+        overflow-y: auto !important;
+    }
+
+    #bookingModal .modal-footer {
+        padding: 1rem !important;
+        flex-shrink: 0 !important;
+    }
+
+    #bookingModal .form-control {
+        padding: 0.875rem !important;
+        font-size: 1rem !important;
+    }
+
+    #bookingModal .btn-primary,
+    #bookingModal .btn-secondary {
+        width: 100% !important;
+        margin-bottom: 0.5rem !important;
+        padding: 1rem !important;
+        font-size: 1.1rem !important;
+    }
+}
+
+#book-btn {
+    transition: all 0.3s ease;
+}
+
+#book-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(254, 66, 77, 0.3);
+}
+
+/* Additional mobile responsive booking modal for smaller screens */
+@media (max-width: 576px) {
+    #bookingModal .modal-header {
+        padding: 1.25rem 0.75rem 0.75rem 0.75rem !important;
+    }
+    
+    #bookingModal .modal-title {
+        font-size: 1.1rem !important;
+    }
+    
+    #bookingModal .modal-body {
+        padding: 1.25rem 0.75rem !important;
+    }
+    
+    #bookingModal .form-label {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    #bookingModal .form-control {
+        padding: 0.75rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    #bookingModal .modal-footer {
+        padding: 0.75rem !important;
+    }
+    
+    #bookingModal .btn-primary,
+    #bookingModal .btn-secondary {
+        padding: 0.875rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #bookingModal .modal-header {
+        padding: 1rem 0.5rem 0.5rem 0.5rem !important;
+    }
+    
+    #bookingModal .modal-title {
+        font-size: 1rem !important;
+    }
+    
+    #bookingModal .modal-body {
+        padding: 1rem 0.5rem !important;
+    }
+    
+    #bookingModal .form-label {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    #bookingModal .form-control {
+        padding: 0.7rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    #bookingModal .modal-footer {
+        padding: 0.5rem !important;
+    }
+    
+    #bookingModal .btn-primary,
+    #bookingModal .btn-secondary {
+        padding: 0.8rem !important;
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Flash Message Responsive Styling */
+.alert {
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem;
+    font-weight: 500;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Booking Status Alert Styling */
+.alert-warning {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+    border-left: 4px solid #ffc107 !important;
+}
+
+.alert-success {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    border-left: 4px solid #28a745 !important;
+}
+
+.alert-danger {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    border-left: 4px solid #dc3545 !important;
+}
+
+.alert-info {
+    background-color: #d1ecf1 !important;
+    color: #0c5460 !important;
+    border-left: 4px solid #17a2b8 !important;
+}
+
+.alert-text {
+    margin-right: 0.5rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+/* Mobile responsive flash messages */
+@media (max-width: 768px) {
+    .alert {
+        margin: 0.5rem 1rem 1rem 1rem !important;
+        padding: 0.875rem 1rem !important;
+        font-size: 0.95rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        max-width: calc(100% - 2rem) !important;
+        width: auto !important;
+        position: relative !important;
+    }
+
+    .alert-text {
+        white-space: normal !important;
+        line-height: 1.3 !important;
+        flex: 1 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        text-align: center !important;
+        margin-right: 0 !important;
+    }
+
+    .alert .btn-close {
+        position: absolute !important;
+        right: 0.5rem !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        padding: 0.375rem !important;
+        background-size: 1rem !important;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Booking status alerts mobile optimization */
+    .alert-warning, .alert-success, .alert-danger {
+        text-align: center !important;
+        padding: 1rem !important;
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .alert {
+        margin: 0.5rem 0.75rem 1rem 0.75rem !important;
+        padding: 0.75rem 0.875rem !important;
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+        max-width: calc(100% - 1.5rem) !important;
+        width: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+    }
+
+    .alert-text {
+        white-space: normal !important;
+        line-height: 1.2 !important;
+        font-size: 0.9rem !important;
+        text-align: center !important;
+        margin-right: 0 !important;
+    }
+
+    .alert .btn-close {
+        position: absolute !important;
+        right: 0.375rem !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        padding: 0.25rem !important;
+        background-size: 0.875rem !important;
+        margin: 0 !important;
+    }
+    
+    /* Booking status alerts small mobile optimization */
+    .alert-warning, .alert-success, .alert-danger {
+        padding: 0.875rem !important;
+        font-size: 0.85rem !important;
+        line-height: 1.3 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .alert {
+        margin: 0.5rem 0.5rem 1rem 0.5rem !important;
+        padding: 0.75rem !important;
+        font-size: 0.875rem !important;
+        max-width: calc(100% - 1rem) !important;
+        width: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+    }
+
+    .alert-text {
+        white-space: normal !important;
+        line-height: 1.2 !important;
+        font-size: 0.85rem !important;
+        text-align: center !important;
+        margin-right: 0 !important;
+    }
+
+    .alert .btn-close {
+        position: absolute !important;
+        right: 0.25rem !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        padding: 0.25rem !important;
+        background-size: 0.8rem !important;
+        margin: 0 !important;
+    }
+    
+    /* Booking status alerts very small mobile optimization */
+    .alert-warning, .alert-success, .alert-danger {
+        padding: 0.75rem !important;
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+    }
+}

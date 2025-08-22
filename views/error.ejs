@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+
+    a{
+        color: white;
+        text-decoration: none;
+    }    
+    
+    button:hover {
+        background-color: #fe424d;
+    }
+
+    .back-btn {
+        background-color: #fe424d;
+        color: #fff;
+        border-radius: 25px;
+        padding: 9px 20px;
+        font-size: 15px;
+    }
+
+    .back-btn:hover {
+        background-color: #fe424d !important;
+        color: #fff !important;
+    }
+
+</style>
+<div class="row mt-3">
+    <div class="alert alert-danger col-6 offset-3 text-center" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+            fill="currentColor"
+            class="bi bi-exclamation-triangle-fill mb-2" viewBox="0 0 16 16">
+            <path
+                d="M8 0c-.69 0-1.373.276-1.879.781L.781 6.121c-.781.781-.781 2.047 0 2.828l5.34 5.34c.781.781 2.047.781 2.828 0l5.34-5.34c.781-.781.781-2.047 0-2.828L9.879.781C9.373.276 8.69 0 8 0zM7 4h2v5H7V4zm0 6h2v2H7v-2z" />
+        </svg>
+        <h4 class="alert-heading"><%= message %></h4>
+        <hr>
+        <button class="btn back-btn">
+            <a href="/listings">Back to Home</a></button>
+    </div>
+</div>
+
+<!-- 
+
+
+background-color: #fe424d !important;
+    border: none !important;
+
+    
+    color: #fe424d;
+    font-size: 2rem;
+    
+    -->

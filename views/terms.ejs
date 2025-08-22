@@ -1,0 +1,101 @@
+<% layout("/layouts/boilerplate") -%>
+
+<style>
+	.terms-hero {
+		background: linear-gradient(135deg, #fe424d 0%, #ff6b6b 100%);
+		color: #ffffff;
+		border-radius: 16px;
+		padding: 2rem 1.5rem;
+		box-shadow: 0 12px 30px rgba(254, 66, 77, 0.25);
+	}
+
+	.section-card {
+		background: #ffffff;
+		border-radius: 12px;
+		border: 1px solid #e9ecef;
+		box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+		padding: 1.25rem 1.25rem;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.section-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+	}
+
+	.section-card h5 { font-weight: 700; margin-bottom: 0.75rem; }
+	.terms-list li + li { margin-top: 0.5rem; }
+
+	@media (max-width: 768px) {
+		.terms-hero { padding: 1.5rem 1rem; }
+		.section-card { padding: 1rem 1rem; }
+	}
+</style>
+
+<div class="container mt-4 mb-5">
+	<div class="terms-hero mb-4">
+		<h2 class="mb-2 d-flex align-items-center">
+			<i class="fas fa-file-contract me-2"></i>
+			Terms & Conditions
+		</h2>
+		<p class="mb-0">Please read these terms carefully. By using CarCruise, you agree to be bound by these terms and our Privacy Policy.</p>
+	</div>
+
+	<div class="row g-3">
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-user-check me-2" style="color:#fe424d;"></i>Eligibility & accounts</h5>
+				<ul class="terms-list mb-0">
+					<li>You must be at least 18 years old and capable of entering into a binding agreement.</li>
+					<li>You are responsible for maintaining the confidentiality of your account and password.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-car-side me-2" style="color:#fe424d;"></i>Bookings & payments</h5>
+				<ul class="terms-list mb-0">
+					<li>Bookings are subject to host approval and availability.</li>
+					<li>Taxes, fees, and applicable deposit policies may apply.</li>
+					<li>Cancellations and refunds follow the host’s policy and platform guidelines.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-shield-alt me-2" style="color:#fe424d;"></i>User conduct</h5>
+				<ul class="terms-list mb-0">
+					<li>Do not misuse the platform, disrupt services, or violate others’ rights.</li>
+					<li>Provide accurate information and comply with applicable laws and regulations.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-ban me-2" style="color:#fe424d;"></i>Prohibited activities</h5>
+				<ul class="terms-list mb-0">
+					<li>Fraud, spamming, reverse engineering, scraping, or distributing malware.</li>
+					<li>Posting unlawful, misleading, or infringing content.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-balance-scale me-2" style="color:#fe424d;"></i>Liability & disclaimers</h5>
+				<p class="mb-0">CarCruise is provided “as is.” To the extent permitted by law, we disclaim warranties and limit liability for indirect or consequential damages.</p>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="section-card h-100">
+				<h5><i class="fas fa-sync-alt me-2" style="color:#fe424d;"></i>Changes to terms</h5>
+				<p class="mb-0">We may update these terms from time to time. Continued use of the platform means you accept the updated terms.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="text-muted mt-4" style="font-size:0.95rem;">
+		If you have any questions about these Terms, please contact us at <a href="mailto:support@carcruise.com">support@carcruise.com</a>.
+	</div>
+</div>
+
+

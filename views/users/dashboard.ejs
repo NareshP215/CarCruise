@@ -1,0 +1,522 @@
+<% layout("/layouts/boilerplate") -%>
+
+<style>
+    .card-body {
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .status-dropdown {
+        min-width: 120px;
+    }
+    
+    .booking-item {
+        transition: all 0.3s ease;
+    }
+    
+    .booking-item:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .status-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    
+    .status-pending { background-color: #ffc107; color: #000; }
+    .status-approved { background-color: #28a745; color: #fff; }
+    .status-rejected { background-color: #dc3545; color: #fff; }
+    
+    .listing-thumbnail {
+        transition: transform 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .listing-thumbnail:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .booking-item .d-flex {
+        gap: 0.75rem;
+    }
+    
+    /* Tab styling */
+    .nav-tabs .nav-link {
+        background-color: white;
+        color: #333 !important;
+        border: 1px solid #dee2e6;
+        border-radius: 5px 5px 0 0;
+        margin-right: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-tabs .nav-link:hover {
+        background-color: #f8f9fa;
+        border-color: #adb5bd;
+        color: #333 !important;
+    }
+    
+    .nav-tabs .nav-link.active {
+        background-color: #fe424d !important;
+        color: white !important;
+        border-color: #fe424d;
+        font-weight: 600;
+    }
+    
+    /* Summary card styling */
+    .summary-card {
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .summary-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        border-color: #fe424d;
+    }
+    
+    .summary-card:active {
+        transform: translateY(-2px);
+    }
+    
+    /* Income statistics styling */
+    .income-stat {
+        padding: 1rem;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        border-left: 4px solid #fe424d;
+        transition: all 0.3s ease;
+    }
+    
+    .income-stat:hover {
+        background-color: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .income-stat h3, .income-stat h4 {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .income-stat small {
+        font-size: 0.85rem;
+    }
+</style>
+
+<div class="container mt-4">
+    <!-- Summary Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3 col-6 mb-3">
+            <div class="card text-center shadow-sm summary-card"
+                data-tab="listings" style="cursor: pointer;">
+                <div class="card-body">
+                    <h6 class="card-title">Total Listing</h6>
+                    <h3 class="card-text"><%= listings.length %></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-3">
+            <div class="card text-center shadow-sm summary-card"
+                data-tab="requests" style="cursor: pointer;">
+                <div class="card-body">
+                    <h6 class="card-title">Total Request</h6>
+                    <h3 class="card-text"><%= bookingRequests ?
+                        bookingRequests.length : 0 %></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-3">
+            <div class="card text-center shadow-sm summary-card"
+                data-tab="income" style="cursor: pointer;">
+                <div class="card-body">
+                    <h6 class="card-title">Total Income</h6>
+                    <h3 class="card-text">₹<%= totalIncome %></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="listings-tab"
+                data-bs-toggle="tab" data-bs-target="#listings" type="button"
+                role="tab" aria-controls="listings" aria-selected="true">My
+                Listings</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="requests-tab" data-bs-toggle="tab"
+                data-bs-target="#requests" type="button" role="tab"
+                aria-controls="requests" aria-selected="false">Booking
+                Requests</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="income-tab" data-bs-toggle="tab"
+                data-bs-target="#income" type="button" role="tab"
+                aria-controls="income" aria-selected="false">Income Details</button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-4" id="dashboardTabsContent">
+        <!-- My Listings Tab -->
+        <div class="tab-pane fade show active" id="listings" role="tabpanel"
+            aria-labelledby="listings-tab">
+            <% if (listings.length === 0) { %>
+            <div class="text-center py-5">
+                <i class="fas fa-home fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">No listings created yet.</h5>
+                <p class="text-muted">Create your first listing to start earning
+                    from your cars.</p>
+                <a href="/listings/new" class="btn mt-3"
+                    style="background-color: #fe424d; color:white">
+                    <i class="fas fa-plus me-2"></i>Create New Listing
+                </a>
+            </div>
+            <% } else { %>
+            <div class="row row-cols-lg-3 row-cols-mg-2 row-cols-sm-1">
+                <% for (let listing of listings) { %>
+                <div class="listing-wrapper" style="position:relative;">
+                    <a href="/listings/<%= listing._id %>" class="listing-link">
+                        <div class="card col listing-card">
+                            <img src="<%= listing.image.url %>"
+                                class="card-img-top"
+                                alt="listing image" style="height: 20rem;">
+                            <div class="card-img-overlay"></div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b><%= listing.title %></b> <br>
+                                    &#8377; <%=
+                                    listing.price.toLocaleString("en-IN") %> /
+                                    day
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+
+        <!-- Booking Requests Tab -->
+        <div class="tab-pane fade" id="requests" role="tabpanel"
+            aria-labelledby="requests-tab">
+            <!-- Note: Bookings for deleted listings are automatically removed -->
+            <% if (bookingRequests && bookingRequests.length > 0) { %>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Manage Booking Requests</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <% bookingRequests.forEach(req => { %>
+                            <div class="booking-item border-bottom p-3">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <% if (req.user && req.listing) { %>
+                                        <div class="d-flex align-items-center">
+                                            <div class="me-3">
+                                                <a
+                                                    href="/listings/<%= req.listing._id %>"
+                                                    class="listing-link">
+                                                    <img
+                                                        src="<%= req.listing.image.url %>"
+                                                        alt="<%= req.listing.title %>"
+                                                        class="listing-thumbnail me-3"
+                                                        style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 2px solid #e9ecef;"
+                                                        title="Click to view <%= req.listing.title %>">
+                                                </a>
+                                            </div>
+                                            <div class="me-3">
+                                                <i
+                                                    class="fas fa-user-circle fa-2x text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1"><%=
+                                                    req.fullName ||
+                                                    req.user.username %></h6>
+                                                <p
+                                                    class="mb-1 text-muted">Requested:
+                                                    <b><%= req.listing.title
+                                                        %></b></p>
+                                                <p class="mb-1 text-muted">
+                                                    <small>
+                                                        📅 <%= req.pickupDate ?
+                                                        new
+                                                        Date(req.pickupDate).toLocaleDateString()
+                                                        : 'N/A' %> -
+                                                        <%= req.returnDate ? new
+                                                        Date(req.returnDate).toLocaleDateString()
+                                                        : 'N/A' %>
+                                                    </small>
+                                                </p>
+                                                <p class="mb-1 text-muted">
+                                                    <small>
+                                                        🕐 <%= req.pickupTime ||
+                                                        'N/A' %> - <%=
+                                                        req.returnTime || 'N/A'
+                                                        %>
+                                                    </small>
+                                                </p>
+                                                <p class="mb-1 text-muted">
+                                                    <small>📞 <%=
+                                                        req.mobileNumber ||
+                                                        'N/A' %></small>
+                                                </p>
+                                                <small
+                                                    class="text-muted">Requested
+                                                    on <%=
+                                                    req.createdAt.toLocaleString()
+                                                    %></small>
+                                            </div>
+                                        </div>
+                                        <% } else { %>
+                                        <p class="text-danger mb-0">Invalid
+                                            booking request — missing user or
+                                            listing data</p>
+                                        <% } %>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span
+                                            class="status-badge <%= 'status-' + req.status %>">
+                                            <%=
+                                            req.status.charAt(0).toUpperCase() +
+                                            req.status.slice(1) %>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <% if (req.user && req.listing) { %>
+                                        <select
+                                            class="form-select status-dropdown"
+                                            data-booking-id="<%= req._id %>"
+                                            <%= (req._isApprovedLocked ? 'disabled' : '') %>>
+                                            <option value="pending"
+                                                <%=req.status === 'pending' ?
+                                                'selected' : ''
+                                                %>>Pending</option>
+                                            <option value="approved"
+                                                <%=req.status === 'approved' ?
+                                                'selected' : ''
+                                                %>>Approved</option>
+                                            <option value="rejected"
+                                                <%=req.status === 'rejected' ?
+                                                'selected' : ''
+                                                %>>Rejected</option>
+                                        </select>
+                                        <% if (req._isApprovedLocked) { %>
+                                        <small class="text-muted d-block mt-1">Locked until <%= new Date(req._endAt).toLocaleString() %></small>
+                                        <% } %>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } else { %>
+            <div class="text-center py-5">
+                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">No booking requests yet.</h5>
+                <p class="text-muted">When users request to book your listings,
+                    they will appear here.</p>
+            </div>
+            <% } %>
+        </div>
+
+        <!-- Income Details Tab -->
+        <div class="tab-pane fade" id="income" role="tabpanel"
+            aria-labelledby="income-tab">
+            <% if (totalBookings > 0) { %>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-chart-line me-2" style="color: #fe424d;"></i>
+                                Income Summary
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="income-stat mb-3">
+                                        <h6 class="text-muted mb-1">Total Approved Income</h6>
+                                        <h3 class="text-success">₹<%= totalIncome %></h3>
+                                        <small class="text-muted">From <%= approvedBookings.length %> approved bookings</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="income-stat mb-3">
+                                        <h6 class="text-muted mb-1">Total Bookings</h6>
+                                        <h4 class="text-primary"><%= totalBookings %></h4>
+                                        <small class="text-muted">All booking requests</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="income-stat mb-3">
+                                        <h6 class="text-muted mb-1">Approved Bookings</h6>
+                                        <h4 class="text-success"><%= approvedBookings.length %></h4>
+                                        <small class="text-muted">Bookings generating income</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="income-stat mb-3">
+                                        <h6 class="text-muted mb-1">Income Per Day</h6>
+                                        <h4 class="text-info">₹<%= approvedBookings.length > 0 ? (parseFloat(totalIncome) / approvedBookings.length).toFixed(2) : '0.00' %></h4>
+                                        <small class="text-muted">Average per approved booking</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } else { %>
+            <div class="text-center py-5">
+                <i class="fas fa-chart-line fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">No income data yet.</h5>
+                <p class="text-muted">Income will appear here once you have approved bookings.</p>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle tab switching
+    const listingsTab = document.getElementById('listings-tab');
+    const requestsTab = document.getElementById('requests-tab');
+    const incomeTab = document.getElementById('income-tab');
+    
+    // Function to update tab styling
+    function updateTabStyling(activeTab, inactiveTab1, inactiveTab2) {
+        activeTab.classList.add('active');
+        inactiveTab1.classList.remove('active');
+        inactiveTab2.classList.remove('active');
+    }
+    
+    // Function to switch tabs
+    function switchToTab(tabName) {
+        if (tabName === 'listings') {
+            updateTabStyling(listingsTab, requestsTab, incomeTab);
+            // Show listings tab content
+            document.getElementById('listings').classList.add('show', 'active');
+            document.getElementById('requests').classList.remove('show', 'active');
+            document.getElementById('income').classList.remove('show', 'active');
+        } else if (tabName === 'requests') {
+            updateTabStyling(requestsTab, listingsTab, incomeTab);
+            // Show requests tab content
+            document.getElementById('requests').classList.add('show', 'active');
+            document.getElementById('listings').classList.remove('show', 'active');
+            document.getElementById('income').classList.remove('show', 'active');
+        } else if (tabName === 'income') {
+            updateTabStyling(incomeTab, listingsTab, requestsTab);
+            // Show income tab content
+            document.getElementById('income').classList.add('show', 'active');
+            document.getElementById('listings').classList.remove('show', 'active');
+            document.getElementById('requests').classList.remove('show', 'active');
+        }
+    }
+    
+    // Add click event listeners for tabs
+    listingsTab.addEventListener('click', function() {
+        switchToTab('listings');
+    });
+    
+    requestsTab.addEventListener('click', function() {
+        switchToTab('requests');
+    });
+
+    incomeTab.addEventListener('click', function() {
+        switchToTab('income');
+    });
+    
+    // Add click event listeners for summary cards
+    const summaryCards = document.querySelectorAll('.summary-card');
+    summaryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const tabName = this.getAttribute('data-tab');
+            switchToTab(tabName);
+        });
+    });
+    
+    // Handle status updates
+    const statusDropdowns = document.querySelectorAll('.status-dropdown');
+    
+    statusDropdowns.forEach(dropdown => {
+        dropdown.addEventListener('change', async function() {
+            const bookingId = this.dataset.bookingId;
+            const newStatus = this.value;
+            const originalStatus = this.getAttribute('data-original-status') || this.value;
+            
+            // Disable dropdown during update
+            this.disabled = true;
+            this.style.opacity = '0.6';
+            
+            try {
+                const response = await fetch('/dashboard/update-booking-status', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        bookingId: bookingId,
+                        status: newStatus
+                    })
+                });
+                
+                const result = await response.json();
+                
+                                 if (result.success) {
+                     // Redirect to dashboard to show flash message
+                     window.location.href = '/dashboard';
+                 } else {
+                     // Revert to original status
+                     this.value = originalStatus;
+                     // Redirect to dashboard to show error flash message
+                     window.location.href = '/dashboard';
+                 }
+                
+                // Re-enable dropdown
+                this.disabled = false;
+                this.style.opacity = '1';
+                         } catch (error) {
+                 console.error('Error updating status:', error);
+                 
+                 // Revert to original status
+                 this.value = originalStatus;
+                 // Redirect to dashboard to show error flash message
+                 window.location.href = '/dashboard';
+                 
+                 // Re-enable dropdown
+                 this.disabled = false;
+                 this.style.opacity = '1';
+             }
+        });
+        
+        // Store original status when page loads
+        dropdown.setAttribute('data-original-status', dropdown.value);
+    });
+    
+
+        
+    
+
+});
+</script>
