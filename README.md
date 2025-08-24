@@ -150,7 +150,7 @@ CarCruise5/
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB running locally (`mongodb://127.0.0.1:27017/wanderlust` by default)
+- MongoDB running locally (`mongodb://127.0.0.1:27017/carcruise` by default)
 - Cloudinary account (for image uploads)
 
 ### Install
